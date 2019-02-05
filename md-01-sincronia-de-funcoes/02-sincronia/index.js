@@ -43,39 +43,25 @@ function obterEndereco(idUsuario, callback) {
     }, 2000);
 }
 
-const usuarioPromise = obterUsuario()
+main()
 
-usuarioPromise
-    .then(function (usuario) {
-        return obterTelefone(usuario.id)
-        .then(function resolverTelefone(result){
-            return {
-                usuario: {
-                    nome: usuario.nome,
-                    id: usuario.id
-                },
-                telefone: result
+async function main(){
 
-            }
-        })
-    })
-    .then(function (resultado) {
-        const endereco = obterEnderecoAsync(resultado.usuario.id)
-        return endereco.then(function resolverEndereco(result){
-            return {
-                usuario: resultado.usuario,
-                telefone: resultado.telefone,
-                endereco: result
-            }
-        });
-    })
-    .then(function (resultado) {
+    try {
+        console.time('medida-promise')
+        const usuario = await obterUsuario()
+        const telefone = await obterTelefone(usuario.id)
+        const endereco = await obterEnderecoAsync(usuario.id)
+
         console.log(`
-            Nome: ${resultado.usuario.nome}
-            Endereco: ${resultado.endereco.rua}, ${resultado.endereco.numero}
-            Telefone: (${resultado.telefone.ddd}) ${resultado.telefone.numero}
+            Nome: ${usuario.nome}
+            Telefone: (${telefone.ddd}) ${telefone.numero}
+            Endereco: ${endereco.rua}, ${endereco.numero}
         `)
-    })
-    .catch(function (error){
+
+        console.timeEnd('medida-promise')
+
+    } catch (error) {
         console.error('DEU RUIM', error)
-    })
+    }
+}
