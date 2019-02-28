@@ -67,6 +67,22 @@ class Database {
         return true;
       }
 
+      async atualizar(id, atualizacoes) {
+        const dados = await this.obterDadosArquivo();
+        const indice = dados.findIndex(item => item.id === parseInt(id));
+        if (indice === -1) {
+          throw Error('heroi não existe!');
+        }
+    
+        const atual = dados[indice];
+        dados.splice(indice, 1);
+    
+        //workaround para remover valores undefined do objeto
+        const objAtualizado = JSON.parse(JSON.stringify(atualizacoes));
+        const dadoAtualizado = Object.assign({}, atual, objAtualizado);
+    
+        return await this.escreverArquivo([...dados, dadoAtualizado]);
+      }
 }
 
 module.exports = new Database();
