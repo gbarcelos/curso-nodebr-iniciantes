@@ -51,7 +51,11 @@ class PostgresStrategy extends IDb {
     }
 
     create(item) {
-        return 'Postgres';
+        return this._herois.create(item, { raw: true });
+    }
+
+    read(item) {
+        return this._herois.findAll({ where: item, raw: true });
     }
 
     _connect() {
