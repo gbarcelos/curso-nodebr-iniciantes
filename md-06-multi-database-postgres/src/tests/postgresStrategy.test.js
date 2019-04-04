@@ -15,8 +15,8 @@ describe('PostgreSQL Strategy', function () {
         await context.delete();
         await context.create(MOCK_HEROI_CADASTRAR);
         await context.create(MOCK_HEROI_ATUALIZAR);
-      });
-/*
+    });
+
     it('PostgresSQL connection', async () => {
         const result = await context.isConnected();
         assert.equal(result, true);
@@ -33,7 +33,7 @@ describe('PostgreSQL Strategy', function () {
         delete result.id;
         assert.deepEqual(result, MOCK_HEROI_CADASTRAR);
     });
-*/
+
     it('atualizar', async () => {
         const [itemAtualizar] = await context.read({ nome: MOCK_HEROI_ATUALIZAR.nome });
 
@@ -46,6 +46,12 @@ describe('PostgreSQL Strategy', function () {
 
         assert.deepEqual(result, 1);
         assert.deepEqual(itemAtualizado.nome, novoItem.nome);
+    });
+
+    it('remover', async () => {
+        const [item] = await context.read({});
+        const result = await context.delete(item.id);
+        deepEqual(result, 1);
     });
 
 });
