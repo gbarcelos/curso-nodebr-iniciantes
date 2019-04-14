@@ -65,6 +65,10 @@ class MongoDBStrategy extends IDb {
     async read(item, skip=0, limit=10) {
         return this._heroes.find(item).skip(skip).limit(limit);
     }
+
+    async update(id, item) {
+        return this._heroes.updateOne({_id: id}, { $set: item})
+    }
 }
 
 module.exports = MongoDBStrategy;

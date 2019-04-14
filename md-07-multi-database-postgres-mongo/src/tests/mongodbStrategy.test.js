@@ -18,6 +18,8 @@ let MOCK_HEROI_ATUALIZAR_ID = '';
 describe('MongoDB Suite de testes', function () {
 
     this.beforeAll(async () => {
+        const result = await context.create(MOCK_HEROI_ATUALIZAR)
+        MOCK_HEROI_ATUALIZAR_ID = result._id
     })
 
     it('verificar conexao', async () => {
@@ -38,6 +40,13 @@ describe('MongoDB Suite de testes', function () {
             nome, poder
         }
         assert.deepEqual(result, MOCK_HEROI_CADASTRAR)
+    })
+
+    it('atualizar', async () => {
+        const result = await context.update(MOCK_HEROI_ATUALIZAR_ID, {
+            poder: 'Laço'
+        })
+        assert.deepEqual(result.nModified, 1)
     })
 
 })
