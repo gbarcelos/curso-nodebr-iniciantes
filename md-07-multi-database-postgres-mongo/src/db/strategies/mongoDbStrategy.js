@@ -69,6 +69,10 @@ class MongoDBStrategy extends IDb {
     async update(id, item) {
         return this._heroes.updateOne({_id: id}, { $set: item})
     }
+
+    async delete(id) {
+        return this._heroes.deleteOne({_id: id})
+    }
 }
 
 module.exports = MongoDBStrategy;
