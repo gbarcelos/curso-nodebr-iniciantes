@@ -1,0 +1,21 @@
+{
+  "name": "md-09-multi-database-refactoring-postgres",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha src/tests/*.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^5.5.1",
+    "pg": "^7.9.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^5.1.1"
+  },
+  "devDependencies": {
+    "mocha": "^6.0.2"
+  }
+}
