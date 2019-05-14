@@ -6,3 +6,5 @@
 /md-08-multi-database-refactoring-mongo/node_modules
 /md-09-multi-database-refactoring-postgres/node_modules
 /md-10-api-estrutura/node_modules
+/md-11-hapi-listar/node_modules
+/md-12-hapi-listar-joi/node_modules
