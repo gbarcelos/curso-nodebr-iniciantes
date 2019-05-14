@@ -1,0 +1,23 @@
+{
+  "name": "md-13-hapi-cadastrar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha src/tests/*.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hapi": "^18.1.0",
+    "joi": "^14.3.1",
+    "mongoose": "^5.5.1",
+    "pg": "^7.9.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^5.1.1"
+  },
+  "devDependencies": {
+    "mocha": "^6.0.2"
+  }
+}
